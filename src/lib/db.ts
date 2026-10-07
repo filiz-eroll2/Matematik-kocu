@@ -75,7 +75,7 @@ async function initSchema(runQuery: (sql: string, params?: any[]) => Promise<any
  * Uzak PostgreSQL (pg.Pool) veya yerel PGlite istemcisini hazırlar
  */
 async function getClient() {
-  const connectionString = process.env.DATABASE_URL;
+  const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
 
   // 1. Canlı / Uzak PostgreSQL (Vercel Postgres, Neon, Supabase, Railway vb.)
   if (connectionString && connectionString.startsWith('postgres')) {
